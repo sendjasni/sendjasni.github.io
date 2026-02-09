@@ -151,7 +151,18 @@ function filterPublications() {
             (pub.abstract && pub.abstract.toLowerCase().includes(searchTerm));
 
         const matchesYear = !yearFilter || pub.year.toString() === yearFilter;
-        const matchesType = !typeFilter || pub.type === typeFilter;
+        
+        // Handle type filtering: group journal and preprint together
+        let matchesType = true;
+        if (typeFilter) {
+            const pubCategory = pub.category || pub.type;
+            if (typeFilter === 'journal') {
+                // Match both journal and preprint types
+                matchesType = pubCategory === 'journal' || pub.type === 'preprint';
+            } else {
+                matchesType = pubCategory === typeFilter || pub.type === typeFilter;
+            }
+        }
 
         return matchesSearch && matchesYear && matchesType;
     });
