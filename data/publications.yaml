@@ -1,6 +1,20 @@
 publications:
+  # ============================================================================
+  # IMPORTANT: This file contains placeholder data
+  # ============================================================================
+  # Please replace these entries with actual publications from your:
+  # - Google Scholar: https://scholar.google.com/citations?hl=en&user=TCkTy9QAAAAJ
+  # - DBLP: https://dblp.org/pid/306/8611.html
+  # - Or BibTeX file: data/publications.bib
+  # 
+  # When adding actual publications:
+  # - Fix any author name typos (e.g., Aberrezzaq -> Abderrezzaq)
+  # - For arXiv papers, use type: "preprint" and category: "journal"
+  # - Organize by category: journal (first), thesis (second), conference (last)
+  # - Publications auto-sort by year descending within each category
+  # ============================================================================
+  
   # Journals (including preprints/arXiv)
-  # Note: Placeholder data - Replace with actual publications from publications.bib
   
   - title: "Placeholder: Computer Vision Research Paper"
     authors: "Abderrezzaq Sendjasni, Co-author Name"

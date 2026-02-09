@@ -415,6 +415,26 @@ body {
     gap: var(--spacing-lg);
 }
 
+.publications-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+/* Publication group styles */
+.publication-group {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.group-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 3px solid var(--primary-color);
+}
+
 .publication-card {
     background: white;
     border: 1px solid var(--border-color);
@@ -459,6 +479,11 @@ body {
 .publication-type.preprint {
     background: rgba(236, 72, 153, 0.1);
     color: var(--accent-color);
+}
+
+.publication-type.thesis {
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
 }
 
 .publication-title {
