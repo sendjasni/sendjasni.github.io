@@ -1,106 +1,65 @@
 publications:
-  - title: "Deep Learning Approaches for Climate Change Prediction"
-    authors: "Dr. [Your Name], Dr. Jane Smith, Prof. John Doe"
-    venue: "Nature Climate Change"
-    year: 2025
-    type: "journal"
-    featured: true
-    links:
-      doi: "https://doi.org/10.1038/example"
-      pdf: "#"
-      code: "https://github.com/example/climate-dl"
-    abstract: "This paper presents novel deep learning architectures for predicting climate patterns with unprecedented accuracy. Our approach combines attention mechanisms with physical constraints to achieve state-of-the-art results on multiple climate datasets."
-
-  - title: "Quantum Machine Learning for Drug Discovery"
-    authors: "Dr. [Your Name], Dr. Alice Johnson"
-    venue: "Science"
-    year: 2025
-    type: "journal"
-    featured: true
-    links:
-      doi: "https://doi.org/10.1126/science.example"
-      pdf: "#"
-    abstract: "We introduce a quantum machine learning framework that accelerates drug discovery by efficiently exploring chemical space. Our method demonstrates significant improvements in identifying potential drug candidates."
-
-  - title: "Neural Architecture Search with Evolutionary Algorithms"
-    authors: "Dr. [Your Name], Prof. Robert Chen, Dr. Maria Garcia"
-    venue: "International Conference on Machine Learning (ICML)"
-    year: 2024
-    type: "conference"
-    featured: true
-    links:
-      doi: "https://proceedings.mlr.press/example"
-      pdf: "#"
-      code: "https://github.com/example/nas-evolution"
-    abstract: "This work proposes a novel evolutionary algorithm for neural architecture search that achieves competitive performance while requiring significantly less computational resources than previous methods."
-
-  - title: "Federated Learning for Privacy-Preserving Healthcare Analytics"
-    authors: "Dr. [Your Name], Dr. Emily White, Dr. Michael Brown"
-    venue: "IEEE Transactions on Medical Imaging"
-    year: 2024
-    type: "journal"
-    links:
-      doi: "https://doi.org/10.1109/TMI.example"
-      pdf: "#"
-    abstract: "We present a federated learning framework for healthcare analytics that preserves patient privacy while enabling collaborative model training across multiple institutions."
-
-  - title: "Attention Mechanisms in Natural Language Processing: A Comprehensive Survey"
-    authors: "Dr. [Your Name], Dr. Sarah Lee"
-    venue: "Association for Computational Linguistics (ACL)"
-    year: 2024
-    type: "conference"
-    links:
-      doi: "https://aclanthology.org/example"
-      pdf: "#"
-    abstract: "A comprehensive survey of attention mechanisms in NLP, covering transformer architectures, multi-head attention, and recent advancements in efficient attention computation."
-
-  - title: "Graph Neural Networks for Molecular Property Prediction"
-    authors: "Dr. [Your Name], Dr. David Kim, Prof. Laura Martinez"
-    venue: "Journal of Chemical Information and Modeling"
-    year: 2023
-    type: "journal"
-    links:
-      doi: "https://doi.org/10.1021/acs.jcim.example"
-      pdf: "#"
-      code: "https://github.com/example/gnn-molecules"
-    abstract: "We develop graph neural network architectures specifically designed for molecular property prediction, achieving state-of-the-art results on standard benchmarks."
-
-  - title: "Transfer Learning for Few-Shot Image Classification"
-    authors: "Dr. [Your Name], Dr. Thomas Anderson"
-    venue: "Computer Vision and Pattern Recognition (CVPR)"
-    year: 2023
-    type: "conference"
-    links:
-      doi: "https://openaccess.thecvf.com/example"
-      pdf: "#"
-      code: "https://github.com/example/transfer-fewshot"
-    abstract: "This paper explores transfer learning strategies for few-shot image classification, introducing a novel meta-learning approach that leverages pre-trained models effectively."
-
-  - title: "Explainable AI for Clinical Decision Support Systems"
-    authors: "Dr. [Your Name], Dr. Patricia Wilson, Dr. James Taylor"
-    venue: "Journal of Biomedical Informatics"
-    year: 2023
-    type: "journal"
-    links:
-      doi: "https://doi.org/10.1016/j.jbi.example"
-      pdf: "#"
-    abstract: "We propose an explainable AI framework for clinical decision support that provides interpretable predictions and insights to healthcare professionals."
-
-  - title: "Reinforcement Learning for Robotic Manipulation"
-    authors: "Dr. [Your Name], Dr. Kevin Zhang"
+  # Journals (including preprints/arXiv)
+  # Note: Placeholder data - Replace with actual publications from publications.bib
+  
+  - title: "Placeholder: Computer Vision Research Paper"
+    authors: "Abderrezzaq Sendjasni, Co-author Name"
     venue: "arXiv preprint"
-    year: 2026
+    year: 2024
     type: "preprint"
+    featured: true
+    category: "journal"
     links:
-      pdf: "https://arxiv.org/abs/example"
-      code: "https://github.com/example/rl-robotics"
-    abstract: "This preprint presents a novel reinforcement learning approach for robotic manipulation tasks, demonstrating improved sample efficiency and generalization capabilities."
+      pdf: "https://arxiv.org/abs/placeholder"
+    abstract: "This is a placeholder entry. Please replace with actual publication data from your BibTeX file."
 
-  - title: "Self-Supervised Learning for Time Series Analysis"
-    authors: "Dr. [Your Name], Dr. Rachel Green, Prof. Daniel Lee"
-    venue: "arXiv preprint"
-    year: 2026
-    type: "preprint"
+  - title: "Placeholder: Signal Processing Journal Article"
+    authors: "Abderrezzaq Sendjasni, Co-author Name"
+    venue: "IEEE Transactions on Signal Processing"
+    year: 2023
+    type: "journal"
+    featured: true
+    category: "journal"
     links:
-      pdf: "https://arxiv.org/abs/example"
-    abstract: "We introduce self-supervised learning techniques for time series analysis that learn meaningful representations without requiring labeled data."
+      doi: "https://doi.org/placeholder"
+      pdf: "#"
+    abstract: "Placeholder entry for a journal article. Update with real publication data."
+
+  # Thesis
+  
+  - title: "Placeholder: Doctoral Thesis Title"
+    authors: "Abderrezzaq Sendjasni"
+    venue: "University of Poitiers"
+    year: 2022
+    type: "thesis"
+    featured: true
+    category: "thesis"
+    links:
+      pdf: "#"
+    abstract: "Placeholder for PhD thesis. Replace with actual thesis information."
+
+  # Conferences
+  
+  - title: "Placeholder: Computer Vision Conference Paper"
+    authors: "Abderrezzaq Sendjasni, Co-author Name"
+    venue: "IEEE Conference on Computer Vision and Pattern Recognition (CVPR)"
+    year: 2023
+    type: "conference"
+    featured: false
+    category: "conference"
+    links:
+      doi: "https://doi.org/placeholder"
+      pdf: "#"
+    abstract: "Placeholder for conference publication."
+
+  - title: "Placeholder: Signal Processing Conference Paper"
+    authors: "Abderrezzaq Sendjasni, Co-author Name"
+    venue: "International Conference on Acoustics, Speech and Signal Processing (ICASSP)"
+    year: 2022
+    type: "conference"
+    featured: false
+    category: "conference"
+    links:
+      doi: "https://doi.org/placeholder"
+      pdf: "#"
+    abstract: "Placeholder for conference publication."
