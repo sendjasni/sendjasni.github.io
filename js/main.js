@@ -88,12 +88,25 @@ function parseYAML(yamlText) {
             inList = false;
             const match = line.match(/^\s+(\w+):\s*(.*)$/);
             const key = match[1];
-            let value = match[2].replace(/["']/g, '');
+            let value = match[2];
             
-            // Convert to appropriate type
-            if (value === 'true') value = true;
-            else if (value === 'false') value = false;
-            else if (!isNaN(value) && value !== '') value = parseInt(value);
+            // Handle inline arrays like: tags: ["Tag1", "Tag2", "Tag3"]
+            if (value.trim().startsWith('[') && value.trim().endsWith(']')) {
+                try {
+                    value = JSON.parse(value);
+                } catch (e) {
+                    // Fallback: manual parsing
+                    value = value.trim().slice(1, -1).split(',').map(item => 
+                        item.trim().replace(/^["']|["']$/g, '')
+                    );
+                }
+            } else {
+                value = value.replace(/["']/g, '');
+                // Convert to appropriate type
+                if (value === 'true') value = true;
+                else if (value === 'false') value = false;
+                else if (!isNaN(value) && value !== '') value = parseInt(value);
+            }
             
             currentItem[key] = value;
         }
