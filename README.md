@@ -1,6 +1,10 @@
-# Scientific Portfolio Website
+# Scientific Portfolio Website - Abderrezzaq Sendjasni
 
 A modern, responsive portfolio website for showcasing scientific publications and research projects. Built with pure HTML, CSS, and JavaScript - no build process required!
+
+**Owner**: Abderrezzaq Sendjasni  
+**Field**: Computer Vision and Signal Processing Research  
+**Links**: [Google Scholar](https://scholar.google.com/citations?hl=en&user=TCkTy9QAAAAJ&view_op=list_works&sortby=pubdate) | [DBLP](https://dblp.org/pid/306/8611.html) | [LinkedIn](https://www.linkedin.com/in/abderrezzaq-sendjasni-ph-d-108905196/)
 
 ## 🌟 Features
 
@@ -13,28 +17,43 @@ A modern, responsive portfolio website for showcasing scientific publications an
 
 ## 🚀 Quick Start
 
-1. **Edit your information** in the HTML files:
-   - Open `index.html`, `publications.html`, and `projects.html`
-   - Replace all `[Your Name]`, `[Your Field]`, `[Your University/Institution]`, etc. with your actual information
-   - Update social media links in the footer
+The site is already configured for Abderrezzaq Sendjasni with:
+- **Name**: Abderrezzaq Sendjasni
+- **Tagline**: Computer Vision and Signal Processing Researcher
+- **Email**: sendjansi.abderrezzaq@gmail.com (primary)
+- **Additional emails**: Available via expand/copy in contact section
+- **Social Links**: Google Scholar, DBLP, LinkedIn, GitHub
 
-2. **Add your publications** in `data/publications.yaml`:
-   - See the "Updating Publications" section below
+To update publications:
+1. Edit `data/publications.yaml` (or `data/publications.bib` if using BibTeX)
+2. Follow the structure documented in "Updating Publications" section below
+3. Push changes to deploy
 
-3. **Add your projects** in `data/projects.yaml`:
-   - See the "Updating Projects" section below
-
-4. **Deploy to GitHub Pages**:
-   - Push your changes to the `main` branch
-   - Go to Settings > Pages
-   - Select `main` branch as source
-   - Your site will be available at `https://[username].github.io`
+To enable projects:
+1. Add project entries to `data/projects.yaml`
+2. Projects will automatically appear on the site
 
 ## 📝 Updating Publications
 
-Edit the `data/publications.yaml` file to add, remove, or modify publications.
+Publications are managed through two files:
+1. **`data/publications.bib`**: BibTeX source file (source of truth)
+2. **`data/publications.yaml`**: YAML data file used by the website
+
+### Quick Update Process
+
+**Option 1: Direct YAML Update (Recommended for small changes)**
+- Edit `data/publications.yaml` directly
+- Publications are automatically grouped by category: Journals → Thesis → Conferences
+- Within each group, publications are sorted by year (descending)
+
+**Option 2: BibTeX Import (Recommended for major updates)**
+1. Update `data/publications.bib` with your BibTeX entries
+2. Convert BibTeX to YAML format
+3. Ensure entries have proper `category` field (journal, thesis, or conference)
 
 ### Publication Structure
+
+Each publication in `publications.yaml` should follow this structure:
 
 ```yaml
 publications:
@@ -42,7 +61,8 @@ publications:
     authors: "Author 1, Author 2, Author 3"
     venue: "Journal or Conference Name"
     year: 2025
-    type: "journal"  # Options: journal, conference, preprint
+    type: "journal"  # Options: journal, conference, preprint, thesis
+    category: "journal"  # Used for grouping: journal, thesis, conference
     featured: true   # Set to true to show on homepage (optional)
     links:
       doi: "https://doi.org/your-doi"
@@ -51,32 +71,32 @@ publications:
     abstract: "Brief description of your paper (optional)"
 ```
 
-### Example
+### Grouping and Display
 
-```yaml
-publications:
-  - title: "Deep Learning for Climate Prediction"
-    authors: "Dr. Jane Smith, Dr. John Doe"
-    venue: "Nature Climate Change"
-    year: 2025
-    type: "journal"
-    featured: true
-    links:
-      doi: "https://doi.org/10.1038/example"
-      pdf: "https://example.com/paper.pdf"
-      code: "https://github.com/example/climate-dl"
-    abstract: "This paper presents novel deep learning approaches..."
-```
+Publications are displayed in three groups:
+1. **Journal Articles & Preprints** (first)
+   - Includes regular journal articles and arXiv preprints
+   - arXiv entries are labeled as "Preprint"
+2. **Thesis** (second)
+   - PhD theses and dissertations
+3. **Conference Papers** (last)
+   - Conference proceedings and workshop papers
+
+Within each group, publications are sorted by year in descending order (newest first).
 
 ### Tips
-- Set `featured: true` for up to 3 publications you want to highlight on the homepage
-- The `type` field determines the badge color (journal=blue, conference=purple, preprint=pink)
+- Set `featured: true` for up to 3 publications to highlight on the homepage
+- For arXiv preprints, use `type: "preprint"` and `category: "journal"`
+- The `category` field determines grouping; `type` determines the badge display
 - All links are optional - include only what's available
-- Publications are displayed in the order they appear in the file
 
 ## 🔨 Updating Projects
 
-Edit the `data/projects.yaml` file to add, remove, or modify projects.
+Projects are currently disabled. The `data/projects.yaml` file is empty, and the site shows a "Coming soon" message.
+
+To enable projects in the future:
+1. Edit `data/projects.yaml` and add project entries
+2. Projects will automatically appear on the homepage and projects page
 
 ### Project Structure
 

@@ -151,7 +151,18 @@ function filterPublications() {
             (pub.abstract && pub.abstract.toLowerCase().includes(searchTerm));
 
         const matchesYear = !yearFilter || pub.year.toString() === yearFilter;
-        const matchesType = !typeFilter || pub.type === typeFilter;
+        
+        // Handle type filtering: group journal and preprint together
+        let matchesType = true;
+        if (typeFilter) {
+            const pubCategory = pub.category || pub.type;
+            if (typeFilter === 'journal') {
+                // Match both journal and preprint types
+                matchesType = pubCategory === 'journal' || pub.type === 'preprint';
+            } else {
+                matchesType = pubCategory === typeFilter || pub.type === typeFilter;
+            }
+        }
 
         return matchesSearch && matchesYear && matchesType;
     });
@@ -171,9 +182,66 @@ function renderPublications() {
         return;
     }
 
-    container.innerHTML = filteredPublications.map(pub => `
+    // Group publications by category: Journals (including preprints), Thesis, Conferences
+    const grouped = {
+        journal: [],
+        thesis: [],
+        conference: []
+    };
+
+    filteredPublications.forEach(pub => {
+        const category = pub.category || pub.type;
+        if (category === 'journal' || category === 'preprint') {
+            grouped.journal.push(pub);
+        } else if (category === 'thesis') {
+            grouped.thesis.push(pub);
+        } else if (category === 'conference') {
+            grouped.conference.push(pub);
+        }
+    });
+
+    // Sort each group by year descending
+    Object.keys(grouped).forEach(key => {
+        grouped[key].sort((a, b) => b.year - a.year);
+    });
+
+    let html = '';
+
+    // Render Journals (including preprints) first
+    if (grouped.journal.length > 0) {
+        html += '<div class="publication-group"><h2 class="group-title">Journal Articles & Preprints</h2>';
+        html += grouped.journal.map(pub => renderPublicationCard(pub)).join('');
+        html += '</div>';
+    }
+
+    // Render Thesis second
+    if (grouped.thesis.length > 0) {
+        html += '<div class="publication-group"><h2 class="group-title">Thesis</h2>';
+        html += grouped.thesis.map(pub => renderPublicationCard(pub)).join('');
+        html += '</div>';
+    }
+
+    // Render Conferences last
+    if (grouped.conference.length > 0) {
+        html += '<div class="publication-group"><h2 class="group-title">Conference Papers</h2>';
+        html += grouped.conference.map(pub => renderPublicationCard(pub)).join('');
+        html += '</div>';
+    }
+
+    container.innerHTML = html;
+}
+
+// Helper function to render a single publication card
+function renderPublicationCard(pub) {
+    // Determine the display type label
+    let typeLabel = pub.type;
+    if (pub.type === 'preprint' || (pub.category === 'journal' && pub.venue.toLowerCase().includes('arxiv'))) {
+        typeLabel = 'Preprint';
+    }
+
+    return `
         <div class="publication-card">
-            <span class="publication-type ${pub.type}">${pub.type}</span>
+            <span class="publication-type ${pub.type}">${typeLabel}</span>
             <h3 class="publication-title">${pub.title}</h3>
             <p class="publication-authors">${pub.authors}</p>
             <p class="publication-venue">${pub.venue}, ${pub.year}</p>
@@ -184,7 +252,7 @@ function renderPublications() {
                 ${pub.links && pub.links.code ? `<a href="${pub.links.code}" class="publication-link" target="_blank">Code</a>` : ''}
             </div>
         </div>
-    `).join('');
+    `;
 }
 
 // Initialize when page loads

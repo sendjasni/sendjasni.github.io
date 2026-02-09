@@ -130,19 +130,27 @@ async function renderFeaturedPublications() {
 
     const featured = data.publications.filter(pub => pub.featured).slice(0, 3);
 
-    container.innerHTML = featured.map(pub => `
-        <div class="publication-card">
-            <span class="publication-type ${pub.type}">${pub.type}</span>
-            <h3 class="publication-title">${pub.title}</h3>
-            <p class="publication-authors">${pub.authors}</p>
-            <p class="publication-venue">${pub.venue}, ${pub.year}</p>
-            <div class="publication-links">
-                ${pub.links && pub.links.doi ? `<a href="${pub.links.doi}" class="publication-link" target="_blank">DOI</a>` : ''}
-                ${pub.links && pub.links.pdf ? `<a href="${pub.links.pdf}" class="publication-link" target="_blank">PDF</a>` : ''}
-                ${pub.links && pub.links.code ? `<a href="${pub.links.code}" class="publication-link" target="_blank">Code</a>` : ''}
+    container.innerHTML = featured.map(pub => {
+        // Determine the display type label
+        let typeLabel = pub.type;
+        if (pub.type === 'preprint' || (pub.category === 'journal' && pub.venue.toLowerCase().includes('arxiv'))) {
+            typeLabel = 'Preprint';
+        }
+
+        return `
+            <div class="publication-card">
+                <span class="publication-type ${pub.type}">${typeLabel}</span>
+                <h3 class="publication-title">${pub.title}</h3>
+                <p class="publication-authors">${pub.authors}</p>
+                <p class="publication-venue">${pub.venue}, ${pub.year}</p>
+                <div class="publication-links">
+                    ${pub.links && pub.links.doi ? `<a href="${pub.links.doi}" class="publication-link" target="_blank">DOI</a>` : ''}
+                    ${pub.links && pub.links.pdf ? `<a href="${pub.links.pdf}" class="publication-link" target="_blank">PDF</a>` : ''}
+                    ${pub.links && pub.links.code ? `<a href="${pub.links.code}" class="publication-link" target="_blank">Code</a>` : ''}
+                </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 // Render featured projects on homepage
@@ -154,6 +162,23 @@ async function renderFeaturedProjects() {
     if (!data || !data.projects) return;
 
     const featured = data.projects.filter(proj => proj.featured).slice(0, 3);
+
+    if (featured.length === 0) {
+        container.innerHTML = `
+            <div style="text-align: center; padding: 2rem;">
+                <p style="color: var(--text-secondary); font-size: 1.1rem;">Coming soon</p>
+            </div>
+        `;
+        // Hide the CTA button for projects
+        const projectsSection = container.closest('.featured-section');
+        if (projectsSection) {
+            const ctaSection = projectsSection.querySelector('.section-cta');
+            if (ctaSection) {
+                ctaSection.style.display = 'none';
+            }
+        }
+        return;
+    }
 
     container.innerHTML = featured.map(proj => `
         <div class="project-card">

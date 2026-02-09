@@ -121,7 +121,12 @@ function renderProjects(projects) {
     const container = document.getElementById('projects-grid');
 
     if (projects.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No projects found.</p>';
+        container.innerHTML = `
+            <div style="text-align: center; padding: 4rem 2rem;">
+                <h2 style="color: var(--text-primary); margin-bottom: 1rem;">Coming Soon</h2>
+                <p style="color: var(--text-secondary); font-size: 1.1rem;">Project showcase is currently being prepared. Check back soon!</p>
+            </div>
+        `;
         return;
     }
 
