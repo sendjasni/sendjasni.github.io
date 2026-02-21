@@ -10,17 +10,17 @@ publications:
     type: "journal"
     featured: true
     category: "journal"
-    links: {}
+    links: {https://www.sciencedirect.com/science/article/pii/S0925231225013293}
     abstract: ""
 
-  - title: "A Two-Fold Patch Selection Approach for Improved 360-Degree Image Quality Assessment"
+  - title: "Embedding-Driven Data Distillation for 360-Degree IQA With Residual-Aware Refinement"
     authors: "Abderrezzaq Sendjasni, Seif-Eddine Benkabou, Mohamed-Chaker Larabi"
     venue: "arXiv preprint arXiv:2412.12667"
     year: 2024
     type: "preprint"
     featured: true
     category: "journal"
-    links: {}
+    links: {https://arxiv.org/abs/2412.12667}
     abstract: ""
 
   - title: "PW-360IQA: Perceptually-weighted multichannel CNN for blind 360-degree image quality assessment"
@@ -30,7 +30,7 @@ publications:
     type: "journal"
     featured: true
     category: "journal"
-    links: {}
+    links: {https://www.mdpi.com/1424-8220/23/9/4242}
     abstract: ""
 
   - title: "Attention-aware patch-based CNN for blind 360-degree image quality assessment"
@@ -40,7 +40,7 @@ publications:
     type: "journal"
     featured: false
     category: "journal"
-    links: {}
+    links: {https://www.mdpi.com/1424-8220/23/21/8676}
     abstract: ""
 
   - title: "Convolutional neural networks for omnidirectional image quality assessment: A benchmark"
@@ -50,7 +50,7 @@ publications:
     type: "journal"
     featured: true
     category: "journal"
-    links: {}
+    links: {https://ieeexplore.ieee.org/abstract/document/9791414?casa_token=ZAaazrnflKAAAAAA:ZdwgP9eWMZObyDhgz7hTwkaGuJwomBZdOv0qb1NFDrkRWABxjW_hErpufkivHW_xEavQfs1pozE}
     abstract: ""
 
   # ==============================================================================
