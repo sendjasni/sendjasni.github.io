@@ -1,29 +1,30 @@
-# Scientific Portfolio Website - Abderrezzaq Sendjasni
+# Abderrezzaq Sendjasni: Research Portfolio
 
-**Owner**: Abderrezzaq Sendjasni  
-**Field**: Computer Vision and Signal Processing Research  
-**Links**: [Google Scholar](https://scholar.google.com/citations?hl=en&user=TCkTy9QAAAAJ&view_op=list_works&sortby=pubdate) | [DBLP](https://dblp.org/pid/306/8611.html) | [LinkedIn](https://www.linkedin.com/in/abderrezzaq-sendjasni-ph-d-108905196/)
-## 
+Personal academic website of **Abderrezzaq Sendjasni**, researcher in computer vision and signal processing at CNRS, XLIM UMR 7252, France.
 
-📁 File Structure
+🌐 **Live site:** [sendjasni.github.io](https://sendjasni.github.io)  
+🔗 **Profiles:** [Google Scholar](https://scholar.google.com/citations?hl=en&user=TCkTy9QAAAAJ&view_op=list_works&sortby=pubdate) · [DBLP](https://dblp.org/pid/306/8611.html) · [GitHub](https://github.com/sendjasni) · [LinkedIn](https://www.linkedin.com/in/abderrezzaq-sendjasni-ph-d-108905196/)
+
+## Overview
+
+The site is a single, self-contained HTML page. It needs no build step, framework, or external files beyond Google Fonts. It includes:
+
+- **About:** research focus and interests
+- **Highlights:** recent papers and milestones
+- **Submitted papers:** work currently under review
+- **Publications:** full list grouped by year, with filters (Selected, Journals, Conferences, Thesis) and BibTeX you can view or copy for each paper
+- **Contact:** affiliation and email addresses
+
+It adapts to phones and desktops and has a light/dark theme switch.
+
+## 📁 File structure
 
 ```
 .
-├── index.html              # Homepage
-├── publications.html       # Publications page
-├── projects.html          # Projects page
-├── css/
-│   └── style.css          # All styles
-├── js/
-│   ├── main.js            # Homepage functionality
-│   ├── publications.js    # Publications page functionality
-│   └── projects.js        # Projects page functionality
-├── data/
-│   ├── publications.yaml  # Publications data
-│   └── projects.yaml      # Projects data
-└── README.md              # This file
+├── index.html   # The whole website: content, styles, and scripts
+└── README.md    # This file
 ```
 
 ## 📄 License
 
-Feel free to use this template for your own portfolio!
+You're welcome to reuse this layout for your own academic portfolio. Please replace all personal content, including text, publications, and links, with your own.
