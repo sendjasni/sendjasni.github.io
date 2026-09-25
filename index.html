@@ -1,147 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Scientific Portfolio - Publications and Research Projects">
-    <title>Abderrezzaq Sendjasni - Scientific Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abderrezzaq Sendjasni · Computer Vision and Signal Processing Researcher</title>
+<meta name="description" content="Abderrezzaq Sendjasni, researcher in computer vision and signal processing at the University of Poitiers. Perceptual quality assessment of images, video, and immersive media.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFBFC; --panel:#F0F3F6; --ink:#1C2430; --muted:#5B6776;
+  --accent:#1F5F8B; --rule:#DDE3EA; --tag:#E3ECF3;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --sans:"Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#141A21; --panel:#1B232C; --ink:#E4E9EF; --muted:#9AA6B3;
+    --accent:#7FB6DC; --rule:#2A3440; --tag:#22303C;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141A21; --panel:#1B232C; --ink:#E4E9EF; --muted:#9AA6B3;
+  --accent:#7FB6DC; --rule:#2A3440; --tag:#22303C;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:1.125rem;line-height:1.65}
+img{max-width:100%}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:4rem;padding:3.5rem 1.5rem}
+aside{position:sticky;top:calc(3.5rem + env(safe-area-inset-top,0px));align-self:start}
+.photo{width:168px;height:168px;border-radius:50%;display:block;background:var(--panel);margin-bottom:1.5rem}
+.name{font-size:2.25rem;line-height:1.1;font-weight:500;margin:0 0 .5rem;letter-spacing:-.01em}
+.role{font-family:var(--sans);color:var(--muted);font-size:1rem;line-height:1.45;margin:0 0 1.5rem}
+.links{list-style:none;padding:0;margin:0 0 1.75rem;font-family:var(--sans);font-size:.98rem}
+.links li{padding:.3rem 0;border-top:1px solid var(--rule)}
+.links li:last-child{border-bottom:1px solid var(--rule)}
+.links a{text-decoration:none;display:flex;justify-content:space-between}
+.links a span{color:var(--muted)}
+nav.toc{font-family:var(--sans);font-size:.95rem;display:flex;flex-direction:column;gap:.25rem}
+nav.toc a{color:var(--muted);text-decoration:none}
+nav.toc a:hover{color:var(--accent)}
+
+main{max-width:680px;min-width:0}
+aside{min-width:0}
+section{margin-bottom:3.5rem}
+h2{font-size:1.6rem;font-weight:500;margin:0 0 1rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
+.lede{font-size:1.3rem;line-height:1.55;margin-top:0}
+.interests{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;list-style:none;font-family:var(--sans);font-size:.95rem}
+.interests li{background:var(--tag);padding:.25rem .7rem;border-radius:4px}
+
+.news{list-style:none;padding:0;margin:0}
+.news li{display:grid;grid-template-columns:6.5rem 1fr;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--rule)}
+.news time{font-family:var(--sans);color:var(--muted);font-size:.95rem;padding-top:.15rem}
+
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.25rem;font-family:var(--sans)}
+.filters button{font:inherit;font-size:.92rem;background:none;border:1px solid var(--rule);color:var(--ink);padding:.3rem .8rem;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.year{font-family:var(--sans);font-weight:600;color:var(--muted);font-size:.95rem;margin:1.75rem 0 .5rem}
+.pub{padding:.9rem 0;border-bottom:1px solid var(--rule)}
+.pub-title{font-weight:600;margin:0;line-height:1.35}
+.pub-authors{margin:.2rem 0 0;color:var(--muted);font-size:1rem}
+.pub-authors b{color:var(--ink);font-weight:600}
+.pub-venue{font-style:italic;margin:.1rem 0 .4rem;font-size:1rem}
+.pub-actions{display:flex;gap:1rem;font-family:var(--sans);font-size:.9rem}
+.pub-actions button,.pub-actions a{background:none;border:0;padding:0;color:var(--accent);font:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.pub-detail{margin-top:.6rem;font-size:1rem;background:var(--panel);padding:.8rem 1rem;border-radius:4px}
+.pub-detail pre{margin:0;font-size:.82rem;white-space:pre;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace}
+
+.note{font-family:var(--sans);color:var(--muted);font-size:.95rem;margin:-.25rem 0 .5rem}
+.sub{padding:.9rem 0;border-bottom:1px solid var(--rule)}
+.sub-meta{font-family:var(--sans);font-size:.92rem;color:var(--muted);margin:.35rem 0 0}
+.badge.review{background:none;border:1px solid var(--accent)}
+.count{font-family:var(--sans);color:var(--muted);font-size:.92rem;margin:-.5rem 0 0}
+.badge{font-family:var(--sans);font-weight:600;font-size:.72rem;background:var(--tag);color:var(--accent);padding:.1rem .45rem;border-radius:3px;vertical-align:.15em;white-space:nowrap}
+.teach{list-style:none;padding:0;margin:0}
+.teach li{padding:.5rem 0;border-bottom:1px solid var(--rule)}
+.teach .term{font-family:var(--sans);color:var(--muted);font-size:.95rem;display:block}
+
+footer{font-family:var(--sans);color:var(--muted);font-size:.9rem;border-top:1px solid var(--rule);padding-top:1rem}
+.theme-btn{font:inherit;background:none;border:1px solid var(--rule);color:var(--muted);border-radius:4px;padding:.2rem .6rem;cursor:pointer;margin-top:1.5rem;font-family:var(--sans);font-size:.85rem}
+
+@media (max-width:820px){
+  .wrap{grid-template-columns:1fr;gap:2rem;padding:2rem 1.25rem}
+  aside{position:static}
+  nav.toc{flex-direction:row;flex-wrap:wrap;gap:.25rem 1rem}
+  .photo{width:120px;height:120px}
+  .news li{grid-template-columns:1fr;gap:0}
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">Portfolio</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="publications.html">Publications</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+<div class="wrap">
+  <aside>
+    <img class="photo" alt="Abderrezzaq Sendjasni" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23C9D6E2'/><text x='50' y='50' dy='.35em' text-anchor='middle' font-family='Georgia,serif' font-size='38' fill='%231F5F8B'>AS</text></svg>">
+    <h1 class="name">Abderrezzaq Sendjasni</h1>
+    <p class="role">Computer Vision and Signal Processing Researcher<br>University of Poitiers, France</p>
+    <ul class="links">
+      <li><a href="mailto:abderrezzaq.sendjasni@univ-poitiers.fr">Email <span>univ-poitiers.fr</span></a></li>
+      <li><a href="https://scholar.google.com/citations?hl=en&amp;user=TCkTy9QAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Google Scholar <span>profile</span></a></li>
+      <li><a href="https://dblp.org/pid/306/8611.html">DBLP <span>profile</span></a></li>
+      <li><a href="https://github.com/sendjasni">GitHub <span>@sendjasni</span></a></li>
+      <li><a href="https://www.linkedin.com/in/abderrezzaq-sendjasni-ph-d-108905196/">LinkedIn <span>profile</span></a></li>
+    </ul>
+    <nav class="toc" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#news">Highlights</a>
+      <a href="#submitted">Submitted</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
     </nav>
+    <button class="theme-btn" id="themeBtn" type="button">Switch theme</button>
+  </aside>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Abderrezzaq Sendjasni</h1>
-            <p class="hero-subtitle">Computer Vision and Signal Processing Researcher</p>
-            <p class="hero-description">Advancing the frontiers of science through innovative research and collaboration</p>
-            <div class="hero-buttons">
-                <a href="publications.html" class="btn btn-primary">View Publications</a>
-                <a href="projects.html" class="btn btn-secondary">Explore Projects</a>
-            </div>
-        </div>
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p class="lede">I study how people perceive the quality of images, video, and immersive media, and how to build models that predict it.</p>
+      <p>I'm a researcher in computer vision and signal processing at the University of Poitiers. Much of my work focuses on perceptual quality assessment for 360-degree images, where I combine subjective studies with deep learning models that account for how viewers explore a scene. I completed my PhD in 2023 with a thesis on objective and subjective quality assessment of 360-degree images.</p>
+      <p>More recently, I've been working on point cloud quality, video frame selection, license plate super-resolution, the robustness of visual encoders to distortion, and the detection of AI-generated images.</p>
+      <ul class="interests" aria-label="Research interests">
+        <li>Image and video quality assessment</li><li>360-degree and immersive media</li><li>Point cloud quality</li><li>Super-resolution</li><li>AI-generated image detection</li><li>Deep learning for vision</li>
+      </ul>
     </section>
 
-    <!-- Info Strip -->
-    <section class="info-strip">
-        <div class="container">
-            <div class="info-item">
-                <div class="info-icon">🎓</div>
-                <div class="info-content">
-                    <h3>Affiliation</h3>
-                    <p>University of Poitiers</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-icon">🔬</div>
-                <div class="info-content">
-                    <h3>Research Interests</h3>
-                    <p>Computer Vision, Signal Processing, Image Analysis</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-icon">📧</div>
-                <div class="info-content">
-                    <h3>Contact</h3>
-                    <p><a href="mailto:sendjansi.abderrezzaq@gmail.com" style="color: inherit;">sendjansi.abderrezzaq@gmail.com</a></p>
-                    <details style="margin-top: 0.5rem;">
-                        <summary style="cursor: pointer; font-size: 0.9em; color: var(--text-secondary);">Additional emails</summary>
-                        <div style="margin-top: 0.5rem; font-size: 0.9em;">
-                            <p style="margin: 0.25rem 0;"><a href="mailto:abderrezzaq.sendjasni@univ-poitiers.fr" style="color: inherit;">abderrezzaq.sendjasni@univ-poitiers.fr</a></p>
-                            <p style="margin: 0.25rem 0;"><a href="mailto:abderres@alumni.ntnu.no" style="color: inherit;">abderres@alumni.ntnu.no</a></p>
-                        </div>
-                    </details>
-                </div>
-            </div>
-        </div>
+    <section id="news">
+      <h2>Highlights</h2>
+      <ul class="news">
+        <li><time datetime="2026">2026</time><span>Paper at IEEE ICIP 2026 on reusing full-reference IQA in blind settings, with Aymen Sekhri, Seyed Ali Amirshahi, and Mohamed-Chaker Larabi.</span></li>
+        <li><time datetime="2026-03">Mar 2026</time><span>New preprint on arXiv: <i>Multi-Feature Fusion Approach for Generative AI Images Detection</i>.</span></li>
+        <li><time datetime="2025">2025</time><span>Journal paper on embedding similarity guided license plate super-resolution published in <i>Neurocomputing</i>.</span></li>
+        <li><time datetime="2025">2025</time><span>Papers at QoMEX 2025 on graph-based point cloud quality assessment and at IEEE MMSP 2025 on visual encoder stability under distortion.</span></li>
+        <li><time datetime="2024">2024</time><span>Paper at IEEE ICIP 2024 on adaptive patch labeling and multi-label learning for 360-degree image quality.</span></li>
+        <li><time datetime="2023">2023</time><span>Completed PhD thesis, <i>Objective and subjective quality assessment of 360-degree images</i>.</span></li>
+      </ul>
     </section>
 
-    <!-- Featured Publications -->
-    <section class="featured-section">
-        <div class="container">
-            <h2 class="section-title">Featured Publications</h2>
-            <div id="featured-publications" class="publications-grid">
-                <!-- Populated by JavaScript -->
-            </div>
-            <div class="section-cta">
-                <a href="publications.html" class="btn btn-primary">View All Publications</a>
-            </div>
-        </div>
+    <section id="submitted">
+      <h2>Submitted papers</h2>
+      <p class="note">Papers currently under review at journals and conferences.</p>
+      <div id="subList"></div>
     </section>
 
-    <!-- Featured Projects -->
-    <section class="featured-section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div id="featured-projects" class="projects-grid">
-                <!-- Populated by JavaScript -->
-            </div>
-            <div class="section-cta">
-                <a href="projects.html" class="btn btn-primary">View All Projects</a>
-            </div>
-        </div>
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="filters" role="group" aria-label="Filter publications">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="featured" aria-pressed="false">Selected</button>
+        <button type="button" data-f="journal" aria-pressed="false">Journals</button>
+        <button type="button" data-f="conference" aria-pressed="false">Conferences</button>
+        <button type="button" data-f="thesis" aria-pressed="false">Thesis</button>
+      </div>
+      <p class="count" id="pubCount"></p>
+      <div id="pubList"></div>
     </section>
 
-    <!-- Contact/Footer -->
-    <footer id="contact" class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Abderrezzaq Sendjasni</h3>
-                    <p>Computer Vision and Signal Processing Researcher</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Connect</h3>
-                    <div class="social-links">
-                        <a href="https://scholar.google.com/citations?hl=en&user=TCkTy9QAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="social-link" aria-label="Google Scholar">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5z"/>
-                            </svg>
-                        </a>
-                        <a href="https://dblp.org/pid/306/8611.html" target="_blank" class="social-link" aria-label="DBLP">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/abderrezzaq-sendjasni-ph-d-108905196/" target="_blank" class="social-link" aria-label="LinkedIn">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                        </a>
-                        <a href="https://github.com/sendjasni" target="_blank" class="social-link" aria-label="GitHub">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="publications.html">Publications</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Abderrezzaq Sendjasni. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>University of Poitiers, France</p>
+      <p><a href="mailto:abderrezzaq.sendjasni@univ-poitiers.fr">abderrezzaq.sendjasni@univ-poitiers.fr</a><br>
+      <a href="mailto:sendjansi.abderrezzaq@gmail.com">sendjansi.abderrezzaq@gmail.com</a><br>
+      <a href="mailto:abderres@alumni.ntnu.no">abderres@alumni.ntnu.no</a></p>
+    </section>
 
-    <script src="js/main.js"></script>
+    <footer>© 2026 Abderrezzaq Sendjasni. Last updated September 2026.</footer>
+  </main>
+</div>
+
+<script>
+const pubs = [{"title": "Multi-Feature Fusion Approach for Generative AI Images Detection", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", "venue": "arXiv preprint arXiv:2603.29788
+        
+        
+        
+        
+        
+        ", "year": 2026, "type": "preprint", "featured": true, "link": "https://arxiv.org/abs/2603.29788
+        
+        ", "bib": "@article{sendjasni2026multi,\n  title={Multi-Feature Fusion Approach for Generative AI Images Detection},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker},\n  journal={arXiv preprint arXiv:2603.29788
+        
+        
+        
+        
+        
+        },\n  year={2026}\n}"}, {"title": "When Restoration Becomes The Reference: Reusing Full-Reference IQA in Blind Settings", "authors": "Aymen Sekhri, Abderrezzaq Sendjasni, Seyed Ali Amirshahi, Mohamed-Chaker Larabi", "venue": "2026 IEEE International Conference on Image Processing (ICIP)", "year": 2026, "type": "conference", "featured": true, "link": "", "bib": "@inproceedings{sekhri2026restoration,\n  title={When Restoration Becomes The Reference: Reusing Full-Reference IQA in Blind Settings},\n  author={Sekhri, Aymen and Sendjasni, Abderrezzaq and Amirshahi, Seyed Ali and Larabi, Mohamed-Chaker},\n  booktitle={2026 IEEE International Conference on Image Processing (ICIP)},\n  pages={1--6},\n  year={2026},\n  organization={IEEE}\n}"}, {"title": "Embedding similarity guided license plate super resolution", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", "venue": "Neurocomputing", "year": 2025, "type": "journal", "featured": true, "link": "https://www.sciencedirect.com/science/article/pii/S0925231225013293", "bib": "@article{sendjasni2025embedding,\n  title={Embedding similarity guided license plate super resolution},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker},\n  journal={Neurocomputing},\n  volume={651},\n  pages={130657},\n  year={2025},\n  publisher={Elsevier}\n}"}, {"title": "Embedding-Driven Data Distillation for 360-Degree IQA With Residual-Aware Refinement", "authors": "Abderrezzaq Sendjasni, Seif-Eddine Benkabou, Mohamed-Chaker Larabi", "venue": "arXiv preprint arXiv:2412.12667
+        
+        
+        
+        
+        
+        ", "year": 2024, "type": "preprint", "featured": true, "link": "https://arxiv.org/abs/2412.12667
+        
+        ", "bib": "@article{sendjasni2024two,\n  title={Embedding-Driven Data Distillation for 360-Degree IQA With Residual-Aware Refinement},\n  author={Sendjasni, Abderrezzaq and Benkabou, Seif-Eddine and Larabi, Mohamed-Chaker},\n  journal={arXiv preprint arXiv:2412.12667
+        
+        
+        
+        },\n  year={2024}\n}"}, {"title": "PW-360IQA: Perceptually-weighted multichannel CNN for blind 360-degree image quality assessment", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", "venue": "Sensors", "year": 2023, "type": "journal", "featured": true, "link": "https://www.mdpi.com/1424-8220/23/9/4242", "bib": "@article{sendjasni2023pw,\n  title={PW-360IQA: Perceptually-weighted multichannel CNN for blind 360-degree image quality assessment},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker},\n  journal={Sensors},\n  volume={23},\n  number={9},\n  pages={4242},\n  year={2023},\n  publisher={MDPI}\n}"}, {"title": "Attention-aware patch-based CNN for blind 360-degree image quality assessment", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", "venue": "Sensors", "year": 2023, "type": "journal", "featured": false, "link": "https://www.mdpi.com/1424-8220/23/21/8676", "bib": "@article{sendjasni2023attention,\n  title={Attention-aware patch-based CNN for blind 360-degree image quality assessment},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker},\n  journal={Sensors},\n  volume={23},\n  number={21},\n  pages={8676},\n  year={2023},\n  publisher={MDPI}\n}"}, {"title": "Convolutional neural networks for omnidirectional image quality assessment: A benchmark", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi, Faouzi Alaya Cheikh", "venue": "IEEE Transactions on Circuits and Systems for Video Technology", "year": 2022, "type": "journal", "featured": true, "link": "https://ieeexplore.ieee.org/abstract/document/9791414?casa_token=ZAaazrnflKAAAAAA:ZdwgP9eWMZObyDhgz7hTwkaGuJwomBZdOv0qb1NFDrkRWABxjW_hErpufkivHW_xEavQfs1pozE", "bib": "@article{sendjasni2022convolutional,\n  title={Convolutional neural networks for omnidirectional image quality assessment: A benchmark},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker and Cheikh, Faouzi Alaya},\n  journal={IEEE Transactions on Circuits and Systems for Video Technology},\n  volume={32},\n  number={11},\n  pages={7301--7316},\n  year={2022},\n  publisher={IEEE}\n}"}, {"title": "Objective and subjective quality assessment of 360-degree images", "authors": "Abderrezzaq Sendjasni", "venue": "PhD Thesis", "year": 2023, "type": "thesis", "featured": true, "link": "", "bib": "@phdthesis{sendjasni2023objective,\n  title={Objective and subjective quality assessment of 360-degree images},\n  author={Sendjasni, Abderrezzaq},\n  year={2023},\n  school={Universit{\\'e} de Poitiers; Universit{\\'e} norv{\\'e}gienne des sciences et de la~…}\n}"}, {"title": "Optimizing Frame Selection for Improved Video Quality Assessment Through Embedding Similarity", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi, Seif-Eddine Benkabou", "venue": "2025 Electronic Imaging Symposium – Image Quality and System Performance", "year": 2025, "type": "conference", "featured": true, "link": "", "bib": "@inproceedings{sendjasni2025optimizing,\n  title={Optimizing Frame Selection for Improved Video Quality Assessment Through Embedding Similarity},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker and Benkabou, Seif-Eddine},\n  booktitle={2025 Electronic Imaging Symposium-Image Quality and System Performance},\n  volume={37},\n  number={9},\n  pages={251},\n  year={2025},\n  organization={Society for Imaging Science and Technology}\n}"}, {"title": "Apport des Descripteurs Visuels à la Détection d’Images Générées par IA", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", "venue": "XXXe Colloque Francophone de Traitement du Signal et des Images", "year": 2025, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2025apport,\n  title={Apport des Descripteurs Visuels {\\`a} la D{\\'e}tection d’Images G{\\'e}n{\\'e}r{\\'e}es par IA},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker},\n  booktitle={XXXe Colloque Francophone de Traitement du Signal et des Images},\n  year={2025}\n}"}, {"title": "IA et Police, le travail policier à l'ère du numérique et de l'IA", "authors": "Hugo Lami, Yoann Nabat, Mathieu Zagrodski, Noémie Levain, Fanny Pagès, Abderrezzaq Sendjasni", "venue": "IA et Police, le travail policier à l'ère du numérique et de l'IA", "year": 2025, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{lami2025ia,\n  title={IA et Police, le travail policier {\\`a} l'{\\`e}re du num{\\'e}rique et de l'IA},\n  author={Lami, Hugo and Nabat, Yoann and Zagrodski, Mathieu and Levain, No{\\'e}mie and Pag{\\`e}s, Fanny and Sendjasni, Abderrezzaq},\n  booktitle={IA et Police, le travail policier {\\`a} l'{\\`e}re du num{\\'e}rique et de l'IA},\n  year={2025}\n}"}, {"title": "Local Structure Matters: A Graph-Based Approach to Point Cloud Perceptual Quality Assessment", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", "venue": "2025 17th International Conference on Quality of Multimedia Experience (QoMEX)", "year": 2025, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2025local,\n  title={Local Structure Matters: A Graph-Based Approach to Point Cloud Perceptual Quality Assessment},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker},\n  booktitle={2025 17th International Conference on Quality of Multimedia Experience (QoMEX)},\n  pages={1--7},\n  year={2025},\n  organization={IEEE}\n}"}, {"title": "Latent Space Stability vs. Perceptual Sensitivity: A Study of Visual Encoders under Distortion", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", "venue": "2025 IEEE International Workshop on Multimedia Signal Processing (MMSP)", "year": 2025, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2025latent,\n  title={Latent Space Stability vs. Perceptual Sensitivity: A Study of Visual Encoders under Distortion},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker},\n  booktitle={2025 IEEE International Workshop on Multimedia Signal Processing (MMSP)},\n  pages={334--339},\n  year={2025},\n  organization={IEEE}\n}"}, {"title": "Enhancing Perceptual Quality Assessment for 360-Degree Images Based on Adaptive Patch Labeling and Multi-Label Learning", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", "venue": "2024 IEEE International Conference on Image Processing (ICIP)", "year": 2024, "type": "conference", "featured": true, "link": "", "bib": "@inproceedings{sendjasni2024enhancing,\n  title={Enhancing Perceptual Quality Assessment for 360-Degree Images Based on Adaptive Patch Labeling and Multi-Label Learning},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker},\n  booktitle={2024 IEEE International Conference on Image Processing (ICIP)},\n  pages={1267--1273},\n  year={2024},\n  organization={IEEE}\n}"}, {"title": "Embedding similarity learning for extreme license plate super-resolution", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", "venue": "2024 IEEE 26th International Workshop on Multimedia Signal Processing (MMSP)", "year": 2024, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2024embedding,\n  title={Embedding similarity learning for extreme license plate super-resolution},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker},\n  booktitle={2024 IEEE 26th International Workshop on Multimedia Signal Processing (MMSP)},\n  pages={1--6},\n  year={2024},\n  organization={IEEE}\n}"}, {"title": "Self patch labeling using quality distribution estimation for CNN-based 360-IQA training", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", "venue": "2023 IEEE International Conference on Image Processing (ICIP)", "year": 2023, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2023self,\n  title={Self patch labeling using quality distribution estimation for CNN-based 360-IQA training},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker},\n  booktitle={2023 IEEE International Conference on Image Processing (ICIP)},\n  pages={2640--2644},\n  year={2023},\n  organization={IEEE}\n}"}, {"title": "Adaptive patch labeling and multi-label feature selection for 360-degree image quality assessment", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi, Seif-Eddine Benkabou", "venue": "2023 IEEE 25th International Workshop on Multimedia Signal Processing (MMSP)", "year": 2023, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2023adaptive,\n  title={Adaptive patch labeling and multi-label feature selection for 360-degree image quality assessment},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker and Benkabou, Seif-Eddine},\n  booktitle={2023 IEEE 25th International Workshop on Multimedia Signal Processing (MMSP)},\n  pages={1--6},\n  year={2023},\n  organization={IEEE}\n}"}, {"title": "SAL-360IQA: A saliency weighted patch-based cnn model for 360-degree images quality assessment", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", "venue": "2022 IEEE International Conference on Multimedia and Expo Workshops (ICMEW)", "year": 2022, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2022sal,\n  title={SAL-360IQA: A saliency weighted patch-based cnn model for 360-degree images quality assessment},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker},\n  booktitle={2022 IEEE International Conference on Multimedia and Expo Workshops (ICMEW)},\n  pages={1--6},\n  year={2022},\n  organization={IEEE}\n}"}, {"title": "Investigating normalization methods for CNN-based image quality assessment", "authors": "Abderrezzaq Sendjasni, David Traparic, Mohamed-Chaker Larabi", "venue": "2022 IEEE International Conference on Image Processing (ICIP)", "year": 2022, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2022investigating,\n  title={Investigating normalization methods for CNN-based image quality assessment},\n  author={Sendjasni, Abderrezzaq and Traparic, David and Larabi, Mohamed-Chaker},\n  booktitle={2022 IEEE International Conference on Image Processing (ICIP)},\n  pages={4113--4117},\n  year={2022},\n  organization={IEEE}\n}"}, {"title": "Transfer Learning from Vision Transformers or ConvNets for 360-Degree Images Quality Assessment?", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", "venue": "2022 IEEE International Conference on Image Processing (ICIP)", "year": 2022, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2022transfer,\n  title={Transfer Learning from Vision Transformers or ConvNets for 360-Degree Images Quality Assessment?},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker},\n  booktitle={2022 IEEE International Conference on Image Processing (ICIP)},\n  pages={4133--4137},\n  year={2022},\n  organization={IEEE}\n}"}, {"title": "Exploration de l’impact de la normalisation sur la performance de l’évaluation de la qualité basée sur des réseaux de neurones convolutionnels", "authors": "Abderrezzaq Sendjasni, David Traparic, Mohamed-Chaker Larabi", "venue": "XXVIIIème Colloque Francophone de Traitement du Signal et des Images", "year": 2022, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2022exploration,\n  title={Exploration de l’impact de la normalisation sur la performance de l’{\\'e}valuation de la qualit{\\'e} bas{\\'e}e sur des r{\\'e}seaux de neurones convolutionnels},\n  author={Sendjasni, Abderrezzaq and Traparic, David and Larabi, Mohamed-Chaker},\n  booktitle={XXVIII{\\`e}me Colloque Francophone de Traitement du Signal et des Images},\n  year={2022}\n}"}, {"title": "Patch-based CNN model for 360 image quality assessment with adaptive pooling strategies", "authors": "Abderrezzaq Sendjasni, Mohamed Chaker Larabi, Faouzi Alaya Cheikh", "venue": "Image Quality and System Performance XIX", "year": 2021, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2022patch,\n  title={Patch-based CNN model for 360 image quality assessment with adaptive pooling strategies},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed Chaker and Cheikh, Faouzi Alaya},\n  booktitle={Image Quality and System Performance XIX},\n  volume={34},\n  number={9},\n  pages={395--1},\n  year={2022}\n}"}, {"title": "Convolutional Neural Networks for Omnidirectional Image Quality Assessment: Pre-Trained or Re-Trained?", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi, Faouzi Alaya Cheikh", "venue": "2021 IEEE International Conference on Image Processing (ICIP)", "year": 2021, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2021convolutional,\n  title={Convolutional Neural Networks for Omnidirectional Image Quality Assessment: Pre-Trained or Re-Trained?},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker and Cheikh, Faouzi Alaya},\n  booktitle={2021 IEEE International Conference on Image Processing (ICIP)},\n  pages={3413--3417},\n  year={2021},\n  organization={IEEE}\n}"}, {"title": "Perceptually-weighted CNN for 360-degree image quality assessment using visual scan-path and JND", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi, Faouzi Alaya Cheikh", "venue": "2021 IEEE International Conference on Image Processing (ICIP)", "year": 2021, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2021perceptually,\n  title={Perceptually-weighted CNN for 360-degree image quality assessment using visual scan-path and JND},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker and Cheikh, Faouzi Alaya},\n  booktitle={2021 IEEE International Conference on Image Processing (ICIP)},\n  pages={1439--1443},\n  year={2021},\n  organization={IEEE}\n}"}, {"title": "Visual Scan-Path based Data-Augmentation for CNN-based 360-degree Image Quality Assessment", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi, Faouzi Alaya Cheikh", "venue": "London Imaging Meeting", "year": 2021, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2021visual,\n  title={Visual Scan-Path based Data-Augmentation for CNN-based 360-degree Image Quality Assessment},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker and Cheikh, Faouzi Alaya},\n  booktitle={London Imaging Meeting},\n  volume={2021},\n  number={1},\n  pages={21--26},\n  year={2021},\n  organization={Society for Imaging Science and Technology}\n}"}, {"title": "On the influence of head-mounted displays on quality rating of omnidirectional images", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi, Faouzi Alaya Cheikh", "venue": "Electronic Imaging", "year": 2021, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2021influence,\n  title={On the influence of head-mounted displays on quality rating of omnidirectional images},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker and Cheikh, Faouzi Alaya},\n  booktitle={Electronic Imaging},\n  volume={33},\n  year={2021},\n  organization={Society for Imaging Science and Technology}\n}"}, {"title": "On the improvement of 2D quality assessment metrics for omnidirectional images", "authors": "Abderrezzaq Sendjasni, Mohamed-Chaker Larabi, Faouzi Alaya Cheikh", "venue": "Electronic Imaging", "year": 2020, "type": "conference", "featured": false, "link": "", "bib": "@inproceedings{sendjasni2020improvement,\n  title={On the improvement of 2D quality assessment metrics for omnidirectional images},\n  author={Sendjasni, Abderrezzaq and Larabi, Mohamed-Chaker and Cheikh, Faouzi Alaya},\n  booktitle={Electronic Imaging},\n  volume={32},\n  pages={1--11},\n  year={2020},\n  publisher={Society for Imaging Science and Technology}\n}"}];
+const ME="Abderrezzaq Sendjasni";
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const list=document.getElementById("pubList");
+const count=document.getElementById("pubCount");
+const match=(p,f)=>f==="all"||(f==="featured"&&p.featured)||(f==="journal"&&(p.type==="journal"||p.type==="preprint"))||p.type===f;
+function render(f){
+  list.innerHTML="";
+  const items=pubs.filter(p=>match(p,f)).sort((a,b)=>b.year-a.year);
+  count.textContent=items.length+(items.length===1?" publication":" publications");
+  let last=null;
+  items.forEach(p=>{
+    if(p.year!==last){const y=document.createElement("div");y.className="year";y.textContent=p.year;list.appendChild(y);last=p.year}
+    const d=document.createElement("article");d.className="pub";
+    const authors=esc(p.authors).replace(ME,"<b>"+ME+"</b>");
+    const tag=p.type==="preprint"?' <span class="badge">Preprint</span>':p.type==="thesis"?' <span class="badge">PhD thesis</span>':"";
+    d.innerHTML=`<p class="pub-title">${esc(p.title)}${tag}</p><p class="pub-authors">${authors}</p><p class="pub-venue">${esc(p.venue)}</p>
+    <div class="pub-actions">${p.link?`<a href="${esc(p.link)}">Paper</a>`:""}<button type="button" aria-expanded="false">BibTeX</button><button type="button" class="copy" hidden>Copy BibTeX</button></div>
+    <div class="pub-detail" hidden><pre></pre></div>`;
+    const box=d.querySelector(".pub-detail"),btn=d.querySelector("button"),cp=d.querySelector(".copy");
+    box.querySelector("pre").textContent=p.bib;
+    btn.addEventListener("click",()=>{const o=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",String(!o));box.hidden=o;cp.hidden=o});
+    cp.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(p.bib);cp.textContent="Copied";setTimeout(()=>cp.textContent="Copy BibTeX",1500)}catch(e){cp.textContent="Select the text to copy"}});
+    list.appendChild(d);
+  });
+}
+
+// Submitted papers: edit this list. kind is "journal" or "conference".
+const submitted = [
+  {title:"[Paper title]", authors:"Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", kind:"journal", venue:"[Journal name]", date:"2026"},
+  {title:"[Paper title]", authors:"Abderrezzaq Sendjasni, Mohamed-Chaker Larabi", kind:"conference", venue:"[Conference name]", date:"2026"}
+];
+(function(){
+  const box=document.getElementById("subList");
+  const sec=document.getElementById("submitted");
+  if(!submitted.length){sec.hidden=true;document.querySelector('a[href="#submitted"]').hidden=true;return}
+  submitted.forEach(s=>{
+    const d=document.createElement("article");d.className="sub";
+    d.innerHTML=`<p class="pub-title">${esc(s.title)} <span class="badge review">Under review</span></p><p class="pub-authors">${esc(s.authors).replace(ME,"<b>"+ME+"</b>")}</p><p class="sub-meta">Submitted to ${s.kind==="journal"?"the journal":"the conference"} <i>${esc(s.venue)}</i>, ${esc(s.date)}</p>`;
+    box.appendChild(d);
+  });
+})();
+document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed","false"));
+  b.setAttribute("aria-pressed","true");render(b.dataset.f);
+}));
+render("all");
+
+const root=document.documentElement;
+try{const t=localStorage.getItem("theme");if(t)root.dataset.theme=t}catch(e){}
+document.getElementById("themeBtn").addEventListener("click",()=>{
+  const dark=root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme=dark?"light":"dark";
+  try{localStorage.setItem("theme",root.dataset.theme)}catch(e){}
+});
+</script>
 </body>
 </html>
